@@ -73,7 +73,7 @@ def validate_config(request):
     json_response = {'errors': [], 'valid': True}
 
     # Extract config from POST
-    user_settings = json.loads(request.raw_post_data)['config']
+    user_settings = json.loads(request.POST['config'])
     
     # If the user did choose a language:
     if not user_settings.get('lang', None):
@@ -99,12 +99,12 @@ def validate_config(request):
 # Alternatively, configure webserver to serve this content
 def meta_json(request):
     
-    return HttpResponseRedirect('/static/meta.json')
+    return HttpResponseRedirect('/static/lp_hello_django/meta.json')
 
 # Alternatively, configure webserver to serve this content
 def icon(request):
     
-    return HttpResponseRedirect('/static/icon.png')
+    return HttpResponseRedirect('/static/lp_hello_django/icon.png')
     
     
     
