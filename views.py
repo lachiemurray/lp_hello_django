@@ -86,9 +86,9 @@ def validate_config(request):
         json_response['errors'].append('Please enter your name into the name box.')
 
     # Is a valid language set?
-    if user_settings.get('language', None) in greetings:
+    if not user_settings.get('lang', None) in greetings:
         json_response['valid'] = False
-        json_response['errors'].append("We couldn't find the language you selected (%s) Please select another" % user_settings['language'])
+        json_response['errors'].append("We couldn't find the language you selected (%s) Please select another" % user_settings['lang'])
     
     # Create response
     response = HttpResponse(json.dumps(json_response), mimetype='application/json')
